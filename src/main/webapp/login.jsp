@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>ログインページ</title>
+<title>Login</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -22,15 +22,15 @@
 	<form action="LoginServlet" method="get">
 		<table>
 			<tr>
-				<td>ユーザ名</td>
+				<td>username</td>
 				<td><input type="text" name="mailaddress" /></td>
 			</tr>
 			<tr>
-				<td>パスワード</td>
+				<td>password</td>
 				<td><input type="password" name="pass" /></td>
 			</tr>
 		</table>
-		<input type="submit" value="ログイン" />
+		<input type="submit" value="login" />
 	</form>
 </body>
 </html>

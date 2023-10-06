@@ -67,28 +67,28 @@ public class InputServlet extends AbstractServlet<EmployeeForm> {
 	public Map<String,String> validation(EmployeeForm form) {
 		HashMap<String,String> map = new HashMap<>();
 		if(!ValidationUtil.validationRequired(form.getName())){
-			map.put("name","社員名は必須入力です");
+			map.put("name","Employee name is required");
 		}
 		if(!ValidationUtil.validationRequired(form.getSectionid())){
-			map.put("sectionid","部署IDは必須入力です");
+			map.put("sectionid","section id is required");
 		}
 		if(!ValidationUtil.validationRequired(form.getPositionid())){
-			map.put("positionid","役職IDは必須入力です");
+			map.put("positionid","position id is required");
 		}
 		if(!ValidationUtil.validationDate(form.getBirthday(),DateUtil.DATE_FORMAT)){
-			map.put("birthday","誕生日は日付型（" + DateUtil.DATE_FORMAT + "）で入力して下さい");
+			map.put("birthday","birthday must be in" + DateUtil.DATE_FORMAT );
 		}
 		if(!ValidationUtil.validationInteger(form.getSectionid())){
-			map.put("sectionid","部署IDは数値型で入力して下さい");
+			map.put("sectionid","section id must be number");
 		}
 		if(!ValidationUtil.validationInteger(form.getPositionid())){
-			map.put("positionid","役職IDは数値型で入力して下さい");
+			map.put("positionid","position id must be number");
 		}
 		if(!ValidationUtil.validationInteger(form.getBasepay())){
-			map.put("basepay","基本給は数値型で入力して下さい");
+			map.put("basepay","basepay must be number");
 		}
 		if(!ValidationUtil.validationInteger(form.getAllowance())){
-			map.put("allowance","手当は数値型で入力して下さい");
+			map.put("allowance","allowance must be number");
 		}
 		return map;
 	}

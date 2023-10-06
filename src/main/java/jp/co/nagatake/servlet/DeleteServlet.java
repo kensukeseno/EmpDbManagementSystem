@@ -57,7 +57,7 @@ public class DeleteServlet extends AbstractServlet<EmployeeForm> {
 	public Map<String,String> validation(EmployeeForm form) {
 		HashMap<String,String> map = new HashMap<>();
 		if(!ValidationUtil.validationRequired(form.getEmpid())){
-			map.put("empId","削除対象の社員を選択してください");
+			map.put("empId","select data to delete");
 		}
 		return map;
 	}

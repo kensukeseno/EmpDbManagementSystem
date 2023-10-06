@@ -7,12 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<title>インプットページ</title>
+<title>Input</title>
 </head>
 <table>
 	<tr>
-		<td><font color="red"><b>ログインユーザ：<%=session.getAttribute("loginId")%></b></font></td>
-		<td><input type="button" value="ログアウト"
+		<td><font color="red"><b>login：<%=session.getAttribute("loginId")%></b></font></td>
+		<td><input type="button" value="logout"
 			onClick="location.href='LogoutServlet'" /></td>
 	</tr>
 </table>
@@ -71,8 +71,8 @@
 				<td class="errmsg"><%=errMsg.get("allowance")  != null ? errMsg.get("allowance") : ""%></td>
 			</tr>
 		</table>
-		<input type="submit" value="送信"> <input type="button"
-			value="戻る" onClick="location.href='OutputServlet'" />
+		<input type="submit" value="send"> <input type="button"
+			value="back" onClick="location.href='OutputServlet'" />
 	</form>
 </body>
 </html>
