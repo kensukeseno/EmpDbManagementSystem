@@ -7,31 +7,31 @@
   <!-- ①web.xml内で使用するservletの名前を定義 -->
     <servlet-name>OutputServlet</servlet-name>
     <!-- ②「①」で定義した名前にクラスを紐付ける -->
-    <servlet-class>jp.co.nagatake.servlet.OutputServlet</servlet-class>
+    <servlet-class>com.ken.empDbManagementSys.servlet.OutputServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>InputServlet</servlet-name>
-    <servlet-class>jp.co.nagatake.servlet.InputServlet</servlet-class>
+    <servlet-class>com.ken.empDbManagementSys.servlet.InputServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>UpdateSelectServlet</servlet-name>
-    <servlet-class>jp.co.nagatake.servlet.UpdateSelectServlet</servlet-class>
+    <servlet-class>com.ken.empDbManagementSys.servlet.UpdateSelectServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>UpdateServlet</servlet-name>
-    <servlet-class>jp.co.nagatake.servlet.UpdateServlet</servlet-class>
+    <servlet-class>com.ken.empDbManagementSys.servlet.UpdateServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>DeleteServlet</servlet-name>
-    <servlet-class>jp.co.nagatake.servlet.DeleteServlet</servlet-class>
+    <servlet-class>com.ken.empDbManagementSys.servlet.DeleteServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>jp.co.nagatake.servlet.LoginServlet</servlet-class>
+    <servlet-class>com.ken.empDbManagementSys.servlet.LoginServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>LogoutServlet</servlet-name>
-    <servlet-class>jp.co.nagatake.servlet.LogoutServlet</servlet-class>
+    <servlet-class>com.ken.empDbManagementSys.servlet.LogoutServlet</servlet-class>
   </servlet>
   <!-- servlet-mappingタグでは、servletタグで定義したservletとurlのマッピングを行う -->
   <servlet-mapping>
