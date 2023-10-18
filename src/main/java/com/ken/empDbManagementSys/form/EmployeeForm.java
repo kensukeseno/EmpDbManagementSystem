@@ -1,8 +1,8 @@
 package com.ken.empDbManagementSys.form;
 
 /**
- * Employeeフォーム
- * @author matsumoto
+ * Employee form
+ * @author ken
  *
  */
 public class EmployeeForm {

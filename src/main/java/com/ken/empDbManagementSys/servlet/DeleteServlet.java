@@ -14,42 +14,42 @@ import com.ken.empDbManagementSys.model.OutputModel;
 import com.ken.empDbManagementSys.util.ValidationUtil;
 
 /**
- * Deleteサーブレットサンプル（Controller）
- * @author matsumoto
+ * Delete sevlet（Controller）
+ * @author ken
  *
  */
 public class DeleteServlet extends AbstractServlet<EmployeeForm> {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// ページ遷移先
+		// Page url to transition to
 		String url = "";
-		// ログインチェック
+		// Login check
 		if(!loginCheck(req)){
 			url = "/login.jsp";
 		}
 		else{
-			// input.htmlから送られたリクエストパラメータの文字コードUTF-8に設定
+			// Set character code of request param from input.html to UTF-8
 			req.setCharacterEncoding("UTF-8");
-			// リクエストパラメータ値を持つフォームオブジェクトを生成（リフレクションを使えば冗長性の解消は可能）
+			// Create form object having request param
 			EmployeeForm form = new EmployeeForm();			
 			form.setEmpid(req.getParameter("empid"));
-			// バリデーションチェック
+			// Validation
 			Map<String,String> list = validation(form);
 			if(list.isEmpty()){
-				// DAOを使用してDBからレコードを取得（Modelクラスに委譲）
+				// Get records from db using dao
 				DeleteModel model = new DeleteModel();
 				model.delete(Integer.parseInt(form.getEmpid()));
 			}else{
-				// エラーメッセージをセッションに設定
+				// Set error messege in cession
 				req.setAttribute("errMsg", list);
 			}
-			// DAOを使用してDBからテーブルの全レコードを取得（Modelクラスに委譲）
+			// Get all records from db using db
 			OutputModel outputModel = new OutputModel();
 			req.setAttribute("list", outputModel.getEmployeeList());
 			url = "/output.jsp";
 		}
-		// ページ遷移
+		// Page transitio
 		req.getRequestDispatcher(url).forward(req,resp);
 	}
 

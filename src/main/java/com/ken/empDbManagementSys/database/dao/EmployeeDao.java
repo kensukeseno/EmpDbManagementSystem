@@ -4,12 +4,12 @@ import java.util.List;
 
 /**
  * EmployeeDao
- * @author matsumoto
+ * @author ken
  *
  */
 public interface EmployeeDao extends Dao<Employee,Integer>{
 	/**
-	 * 名前によるあいまい検索
+	 * Pattern Matching by name
 	 * @param name
 	 */
 	public abstract List<Employee> selectByName(String name);

@@ -16,23 +16,23 @@ import com.ken.empDbManagementSys.util.DateUtil;
 import com.ken.empDbManagementSys.util.ValidationUtil;
 
 /**
- * Inputサーブレットサンプル（Controller）
- * @author matsumoto
+ * Input servlet（Controller）
+ * @author ken
  *
  */
 public class InputServlet extends AbstractServlet<EmployeeForm> {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// input.htmlから送られたリクエストパラメータの文字コードUTF-8に設定
+		// Set character code of request param from input.html to UTF-8
 		req.setCharacterEncoding("UTF-8");
-		// ページ遷移先
+		// Page url to transition to
 		String url = "";
-		// ログインチェック
+		// Login check
 		if(!loginCheck(req)){
 			url = "/login.jsp";
 		}else{
-			// リクエストパラメータ値を持つフォームオブジェクトを生成（リフレクションを使えば冗長性の解消は可能）
+			// Set character code of request param from input.html to UTF-8
 			EmployeeForm form = new EmployeeForm();
 			form.setName(req.getParameter("name"));
 			form.setPhone(req.getParameter("phone"));
@@ -42,25 +42,25 @@ public class InputServlet extends AbstractServlet<EmployeeForm> {
 			form.setPositionid(req.getParameter("positionid"));
 			form.setBasepay(req.getParameter("basepay"));
 			form.setAllowance(req.getParameter("allowance"));			
-			// バリデーションチェック
+			// Validation
 			Map<String,String> list = validation(form);
 			if(list.isEmpty()){
-				// DAOを使用してDBにデータを登録（Modelクラスに委譲）
+				// Put data on database using dao
 				InputModel model = new InputModel();
 				model.insert(EmployeeConverter.formToRepository(form));
-				// DAOを使用してDBからテーブルの全レコードを取得（Modelクラスに委譲）
+				// Get all data from db using dao
 				OutputModel outputModel = new OutputModel();
 				req.setAttribute("list", outputModel.getEmployeeList());
 				url = "/output.jsp";
 			}else{
-				// エラーメッセージをセッションに設定
+				// Set error messege in cession
 				req.setAttribute("errMsg", list);
-				// ユーザ入力情報をセッションに登録
+				// Set user input info in cession
 				req.setAttribute("employeeForm", form);
 				url = "/input.jsp";
 			}
 		}
-		// ページ遷移
+		// Page transition
 		req.getRequestDispatcher(url).forward(req,resp);
 	}
 	@Override

@@ -15,44 +15,44 @@ import com.ken.empDbManagementSys.model.UpdateSelectModel;
 import com.ken.empDbManagementSys.util.ValidationUtil;
 
 /**
- * UpdateSelectサーブレットサンプル（Controller）
- * @author matsumoto
+ * UpdateSelect servlet（Controller）
+ * @author ken
  *
  */
 public class UpdateSelectServlet extends AbstractServlet<EmployeeForm> {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// input.htmlから送られたリクエストパラメータの文字コードUTF-8に設定
+		// Set character code of request param from input.html to UTF-8
 		req.setCharacterEncoding("UTF-8");
-		// ページ遷移先
+		// Page url to transition to
 		String url = "";
-		// ログインチェック
+		// Login check
 		if(!loginCheck(req)){
 			url = "/login.jsp";
 		}else{
-			// リクエストパラメータ値を持つフォームオブジェクトを生成（リフレクションを使えば冗長性の解消は可能）
+			// Create form object having request param
 			EmployeeForm form = new EmployeeForm();
 			form.setEmpid(req.getParameter("empid"));
-			// バリデーションチェック
+			// Validation
 			Map<String,String> map = validation(form);
 			if(map.isEmpty()){
-				// DAOを使用してDBからレコードを取得（Modelクラスに委譲）
+				// Get records from database using dao
 				UpdateSelectModel model = new UpdateSelectModel();
-				// セッションにエンティティを登録
+				// Set entity in cession
 				req.setAttribute("employeeForm", EmployeeConverter.repositoryToForm(model.selectById(Integer.parseInt(form.getEmpid()))));
-				// 正常ページに遷移
+				// Transition to normal page
 				url = "/update.jsp";
 			}else{
-				// エラーメッセージをセッションに設定
+				// Set error messege in cession
 				req.setAttribute("errMsg", map);
-				// DAOを使用してDBからテーブルの全レコードを取得（Modelクラスに委譲）
+				// Get all records from database using dao
 				OutputModel outputModel = new OutputModel();
 				req.setAttribute("list", outputModel.getEmployeeList());
 				url = "/output.jsp";
 			}
 		}
-		// ページ遷移
+		// Page transition
 		req.getRequestDispatcher(url).forward(req,resp);
 	}
 	@Override

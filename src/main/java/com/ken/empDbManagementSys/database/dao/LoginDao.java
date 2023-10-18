@@ -2,12 +2,12 @@ package com.ken.empDbManagementSys.database.dao;
 
 /**
  * EmployeeDao
- * @author matsumoto
+ * @author ken
  *
  */
 public interface LoginDao extends Dao<Login,String>{
 	/**
-	 * IDとパスワードによる検索
+	 * Search by ID and password
 	 * @param id
 	 * @param pass
 	 * @return

@@ -4,39 +4,39 @@ import java.util.List;
 
 /**
  * Dao
- * @author matsumoto
+ * @author ken
  *
  */
 public interface Dao<E,P> {
 	/**
-	 * データの取得
-	 * @return 結果セット
+	 * Get data
+	 * @return result set
 	 */
 	public abstract List<E> selectAll();
 
 	/**
-	 * プライマリキーによるデータの取得
+	 * Get data by primary key
 	 */
 	public abstract E selectById(P primaryKey);
 
 	/**
 	 * update
 	 * @param employee
-	 * @return 更新件数
+	 * @return the number of updated data
 	 */
 	public abstract int update(E entity);
 
 	/**
 	 * insert
 	 * @param employee
-	 * @return 更新件数
+	 * @return the number of updated data
 	 */
 	public abstract int insert(E entity);
 
 	/**
 	 * delete
 	 * @param employee
-	 * @return 更新件数
+	 * @return the number of updated data
 	 */
 	public abstract int delete(E entity);
 

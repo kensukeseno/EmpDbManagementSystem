@@ -2,8 +2,8 @@ package com.ken.empDbManagementSys.util;
 
 public class IntegerUtil {
 	/**
-	 * Integer.parseIntのnull・空文字許容版
-	 * null・空文字の場合0に変換する
+	 * Allow null or empty input to Integer.parseInt
+	 * Convert null or empty input to 0
 	 * @param value
 	 * @return
 	 */

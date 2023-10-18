@@ -9,27 +9,26 @@ import javax.servlet.http.HttpServletRequest;
 import com.ken.empDbManagementSys.util.ValidationUtil;
 
 /**
- * 基底サーブレットサンプル
- * サーブレットとしてパラメータのバリデーションチェックを行うことは必須のため、
- * 個々のサーブレットではなく基底クラスに定義する
+ * Base servlet
+ * Validation method is written in this base class since it is necessary in every servlet
  *
- * @author matsumoto
+ * @author ken
  *
  */
 public abstract class AbstractServlet<E> extends HttpServlet {
 	public static boolean loginCheck(HttpServletRequest req) {
-		// ログインチェック
+		// Login check
 		if(!ValidationUtil.loginCheck((String)req.getSession().getAttribute("loginId"))){
-			// エラーメッセージをセッションに設定
+			// Set error messege in ces·sion
 			Map<String,String> list = new HashMap<>();
-			list.put("loginErrorMsg","セッション情報がタイムアウトしたか不正なログインです");
+			list.put("loginErrorMsg","cession timeout or invalid login");
 			req.setAttribute("errMsg", list);
 			return false;
 		}
 		return true;
 	}
 	/**
-	 * 入力チェック
+	 * Input check
 	 * @return
 	 */
 	abstract protected Map<String,String> validation(E e);

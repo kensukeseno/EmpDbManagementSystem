@@ -7,12 +7,12 @@ import com.ken.empDbManagementSys.util.DateUtil;
 import com.ken.empDbManagementSys.util.StringUtil;
 
 /**
- * EmployeeテーブルDao
- * @author matsumoto
+ * Employee table Dao
+ * @author ken
  *
  */
 public class EmployeeDaoImpl implements EmployeeDao{
-	// テーブル定数
+	// table constants
 	private static final String SELECT = " SELECT ";
 	private static final String UPDATE = " UPDATE ";
 	private static final String INSERT = " INSERT ";
@@ -40,16 +40,16 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	private DatabaseAccesser db;
 
 	/**
-	 * コンストラクタ
-	 * @param db データベースアクセスオブジェクト
+	 * Constructor
+	 * @param db database access object
 	 */
 	public EmployeeDaoImpl(){
 		this.db = new DatabaseAccesser();
 	}
 
 	/**
-	 * Select文（全データ）のSQL実行
-	 * @return Employeeエンティティを格納したList
+	 * SQL implementation of select statement (all data)
+	 * @return List of employee entities
 	 */
 	@Override
 	public List<Employee> selectAll() {
@@ -57,7 +57,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	}
 
 	/**
-	 * Select文（プライマリキー検索）のSQL実行
+	 * SQL implementation of select statement (with primary key constraint)
 	 */
 	@Override
 	public Employee selectById(Integer empid) {
@@ -70,9 +70,9 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	}
 
 	/**
-	 * Select文（名前によるあいまい検索）のSQL実行
-	 * @param 名前カラムに対するあいまい検索キーワード
-	 * @return Employeeエンティティを格納したList
+	 * SQL implementation of select statement (pattern Matching by name) 
+	 * @param pattern word for name column
+	 * @return List of employee entities
 	 */
 	@Override
 	public List<Employee> selectByName(String name) {
@@ -80,9 +80,9 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	}
 
 	/**
-	 * Update文のSQL実行
-	 * @param sql SQL文
-	 * @return 更新件数
+	 * SQL implementation of update statement
+	 * @param sql SQL statement
+	 * @return the number of updated data
 	 */
 	@Override
 	public int update(Employee employee){
@@ -103,9 +103,9 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	}
 
 	/**
-	 * Insert文のSQL実行（ID自動採番）
-	 * @param sql SQL文
-	 * @return 更新件数
+	 * SQL implementation of insert statement（auto id assigning）
+	 * @param sql SQL statement
+	 * @return the number of inserted data
 	 */
 	@Override
 	public int insert(Employee employee){
@@ -126,9 +126,9 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	}
 
 	/**
-	 * Delete文のSQL実行
-	 * @param sql SQL文
-	 * @return 更新件数
+	 * SQL implementation of delete statement
+	 * @param sql SQL statement
+	 * @return the number of deleted data
 	 */
 	@Override
 	public int delete(Employee employee){

@@ -8,8 +8,8 @@ import com.ken.empDbManagementSys.database.dao.EmployeeDao;
 import com.ken.empDbManagementSys.database.dao.EmployeeDaoImpl;
 
 /**
- * OutPut処理のModelクラス
- * @author matsumoto
+ * Model class for output process
+ * @author ken
  *
  */
 public class OutputModel {
@@ -20,7 +20,7 @@ public class OutputModel {
 
 	public List<Employee> getEmployeeList(String key){
 		List<Employee> result = new ArrayList<Employee>();
-		// DAOの準備
+		// Get DAO object
 		EmployeeDao dao = new EmployeeDaoImpl();
 		if(key != null && !key.equals("")){
 			result = dao.selectByName(key);

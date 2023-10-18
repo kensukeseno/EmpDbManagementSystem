@@ -5,15 +5,15 @@ import com.ken.empDbManagementSys.database.dao.EmployeeDao;
 import com.ken.empDbManagementSys.database.dao.EmployeeDaoImpl;
 
 /**
- * UpdateSelctServlet処理のModelクラス
- * @author matsumoto
+ * Model class for update and select process
+ * @author ken
  *
  */
 public class UpdateSelectModel {
 	public Employee selectById(int empId){
-		// DAOの準備
+		// Get DAO object
 		EmployeeDao dao = new EmployeeDaoImpl();
-		// Selectの実行
+		// Implement selection
 		return dao.selectById(empId);
 	}
 }

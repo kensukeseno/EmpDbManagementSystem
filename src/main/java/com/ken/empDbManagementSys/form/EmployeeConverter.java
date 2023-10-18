@@ -4,7 +4,6 @@ import com.ken.empDbManagementSys.database.dao.Employee;
 import com.ken.empDbManagementSys.util.DateUtil;
 import com.ken.empDbManagementSys.util.IntegerUtil;
 
-// 本当はもっと汎用的なコンバーターがあるが今回は手作り
 public class EmployeeConverter {
 	public static Employee formToRepository(EmployeeForm form) {
 		Employee emp = new Employee();

@@ -2,11 +2,11 @@
 <!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web
   Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
 <web-app>
-  <!-- servletタグでは、web.xml内で使用するserlvetの名前定義とクラスの紐付けを行う -->
+  <!-- in servlet tag, associate servlet name used in web.xml with class name -->
   <servlet>
-  <!-- ①web.xml内で使用するservletの名前を定義 -->
+  <!-- ① Define servlet name used in web.xml -->
     <servlet-name>OutputServlet</servlet-name>
-    <!-- ②「①」で定義した名前にクラスを紐付ける -->
+    <!-- ② Associate「①」with class name -->
     <servlet-class>com.ken.empDbManagementSys.servlet.OutputServlet</servlet-class>
   </servlet>
   <servlet>
@@ -33,11 +33,11 @@
     <servlet-name>LogoutServlet</servlet-name>
     <servlet-class>com.ken.empDbManagementSys.servlet.LogoutServlet</servlet-class>
   </servlet>
-  <!-- servlet-mappingタグでは、servletタグで定義したservletとurlのマッピングを行う -->
+  <!-- in servlet-mapping tag, map servlet defined in servlet tag to url -->
   <servlet-mapping>
-  <!-- ③「①」で定義した名前を使用する -->
+  <!-- ③ Name defined in 「①」-->
     <servlet-name>OutputServlet</servlet-name>
-    <!-- ④「①」で定義したservletとurlをマッピングする -->
+    <!-- ④ Map servlet defined in 「①」 to url -->
     <url-pattern>/OutputServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>

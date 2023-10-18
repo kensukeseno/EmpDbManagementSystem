@@ -7,8 +7,8 @@ import com.ken.empDbManagementSys.database.DatabaseAccesser;
 import com.ken.empDbManagementSys.util.StringUtil;
 
 /**
- * EmployeeテーブルDao
- * @author matsumoto
+ * Employee table Dao
+ * @author ken
  *
  */
 public class LoginDaoImpl implements LoginDao{
@@ -32,18 +32,18 @@ public class LoginDaoImpl implements LoginDao{
 	private DatabaseAccesser db;
 
 	/**
-	 * コンストラクタ
-	 * @param db データベースアクセスオブジェクト
+	 * Constructor
+	 * @param db database object access
 	 */
 	public LoginDaoImpl(){
 		this.db = new DatabaseAccesser();
 	}
 
 	/**
-	 * Select文（IDとPASSをキーとした）のSQL実行
+	 * SQL implementation of select statement (by id and password)
 	 * @param mailaddress
 	 * @param passwd
-	 * @return Loginエンティティ
+	 * @return Login entity
 	 */
 	@Override
 	public Login selectByMailaddressAndPass(String mailaddress, String pass) {

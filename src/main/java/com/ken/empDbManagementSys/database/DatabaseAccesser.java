@@ -11,21 +11,20 @@ import com.ken.empDbManagementSys.database.dao.Employee;
 import com.ken.empDbManagementSys.database.dao.Login;
 
 /**
- * データベースのアクセサクラス
- * @author matsumoto
+ * Database access class
+ * @author ken
  *
  */
 public class DatabaseAccesser{
-	// JDBCドライバ指定
+	// Assign JDBC driver
 	private static final String DRIVER = "org.postgresql.Driver";
-	// データベースサーバのIPおよびポート
-	// データベースサーバのIPおよびポート
+	// IP and port of database server
 	private static final String SERVER = "localhost";
-	// データベース名
+	// Database name
 	private static final String DBNAME = "seno_db";
 	// URI
 	private static final String URL = "jdbc:postgresql://" + SERVER + "/" + DBNAME;
-	// データベース作成ユーザパスワード
+	// Password of database user
 	private static final String USER = "seno_dbuser";
 	private static final String PASSWORD = "seno";
 
@@ -34,56 +33,56 @@ public class DatabaseAccesser{
 	private Connection con;
 
 	/**
-	 * コネクションオープン（コネクション生成およびステートメントの作成）
+	 * Open connection（create connection and statement）
 	 */
 	public void open(){
 		try{
-			// ドライバの指定
+			// Assign driver
 			Class.forName (DRIVER);
-			// データベースとの接続
+			// Connect with databas
 			con = DriverManager.getConnection(URL, USER, PASSWORD);
-			// ステートメントの作成（SQLをDBに発行するためのオブジェクト）
+			// Create statement（Object to send sql to database）
 			stmt = con.createStatement();
 		}catch(ClassNotFoundException e){
-			System.err.println("ドライバエラー");
+			System.err.println("driver error");
 			e.printStackTrace ();
 		}
 		catch (SQLException e) {
-			System.err.println("コネクションオープンエラー");
-			// スタックトレースの出力
+			System.err.println("connection open exception");
+			// Print stack trace
 			e.printStackTrace ();
 		}
 	}
 
 	/**
-	 * コネクションクローズ
+	 * Close connection
 	 */
 	public void close(){
 		try{
-			// ステートメントのクローズ
+			// Close statement
 			stmt.close();
-			// コネクションのクローズ
+			// Close connection
 			con.close();
 		}
 		catch (SQLException e) {
-			System.err.println("コネクションクローズエラー");
-			// スタックトレースの出力
+			System.err.println("connection close error");
+			// Print stack trace
 			e.printStackTrace ();
 		}
 	}
 
 	/**
-	 * Select文の実行（ORマッピング（DatabaseAccesserに持たせたくはなかった…））
-	 * Auto-boxingを使用している
+	 * SQL implementation of select statement （OR mapping）
+	 * Auto-boxing
 	 * @param sql
 	 * @return
 	 */
 	public List<Employee> executeQueryEmployee(String sql) {
-		// DBオープン
+		// Open db
 		open();
 		List<Employee> result = new ArrayList<Employee>();
 		try {
-			// テーブル照会実行
+			// Get data
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
 				Employee employee = new Employee();
@@ -98,33 +97,33 @@ public class DatabaseAccesser{
 				employee.setAllowance(rs.getInt("allowance"));
 				result.add(employee);
 			}
-			// RSのクローズ
+			// Close RS
 			rs.close();
 		}catch(SQLException e){
 			System.err.println("executeQuery:err");
-			// スタックトレースの出力
+			// Print stack trace
 			e.printStackTrace ();
 		}finally{
-			// デバッグ用コード
+			// debug
 			System.out.println(sql);
-			// DBクローズ
+			// Close db
 			close();
 		}
 		return result;
 	}
 
 	/**
-	 * Select文の実行（ORマッピング（DatabaseAccesserに持たせたくはなかった…））
-	 * Auto-boxingを使用している
+	 * SQL implementation of select statement （OR mapping）
+	 * Auto-boxing
 	 * @param sql
 	 * @return
 	 */
 	public List<Login> executeQueryLogin(String sql) {
-		// DBオープン
+		// Open db
 		open();
 		List<Login> result = new ArrayList<Login>();
 		try {
-			// テーブル照会実行
+			// Get data
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
 				Login login = new Login();
@@ -133,63 +132,43 @@ public class DatabaseAccesser{
 				login.setPass(rs.getString("passwd"));
 				result.add(login);
 			}
-			// RSのクローズ
+			// Close RS
 			rs.close();
 		}catch(SQLException e){
 			System.err.println("executeQuery:err");
-			// スタックトレースの出力
+			// Print stack trace
 			e.printStackTrace ();
 		}finally{
-			// デバッグ用コード
+			// debug
 			System.out.println(sql);
-			// DBクローズ
+			// Close DB
 			close();
 		}
 		return result;
 	}
 
 	/**
-	 * Insert,Update,Delete文の実行
+	 * Implementation of Insert,Update,Delete statements
 	 * @param sql
 	 * @return
 	 */
 	public int executeUpdate(String sql) {
-		// DBオープン
+		// Open db
 		open();
 		int result = 0;
 		try {
-			// テーブル更新実行
+			// Update
 			result = stmt.executeUpdate(sql);
 		}catch(SQLException e){
 			System.err.println("executeUpdate:err");
-			// スタックトレースの出力
+			// Print stack trace
 			e.printStackTrace ();
 		}finally{
-			// デバッグ用コード
+			// debug
 			System.out.println(sql);
-			// DBクローズ
+			// Close db
 			close();
 		}
 		return result;
 	}
-
-	/*
-    public ArrayList<HashMap<String,String>> executeQuery(String sql) {
-        ArrayList<HashMap<String,String>> result = new ArrayList<HashMap<String,String>>();
-        try {
-            ListUtil util = new ListUtil();
-            // テーブル照会実行
-            ResultSet rs = stmt.executeQuery(sql);
-            // テーブル照会結果を出力
-            result = util.arrayListFromResultSet(rs);
-            // RSのクローズ
-            rs.close();
-        }catch(SQLException e){
-            System.err.println("executeQuery:err");
-            // スタックトレースの出力
-            e.printStackTrace ();
-        }
-        return result;
-    }
-	 */
 }

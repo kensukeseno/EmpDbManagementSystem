@@ -11,8 +11,8 @@
 </head>
 <table>
 	<tr>
-		<td><font color="red"><b>login：<%=session.getAttribute("loginId")%></b></font></td>
-		<td><input type="button" value="logout"
+		<td><font color="red"><b>Login：<%=session.getAttribute("loginId")%></b></font></td>
+		<td><input type="button" value="Logout"
 			onClick="location.href='LogoutServlet'" /></td>
 	</tr>
 </table>
@@ -71,8 +71,8 @@
 				<td class="errmsg"><%=errMsg.get("allowance")  != null ? errMsg.get("allowance") : ""%></td>
 			</tr>
 		</table>
-		<input type="submit" value="send"> <input type="button"
-			value="back" onClick="location.href='OutputServlet'" />
+		<input type="submit" value="Send"> <input type="button"
+			value="Back" onClick="location.href='OutputServlet'" />
 	</form>
 </body>
 </html>

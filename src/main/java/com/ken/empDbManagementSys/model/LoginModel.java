@@ -4,20 +4,20 @@ import com.ken.empDbManagementSys.database.dao.Login;
 import com.ken.empDbManagementSys.database.dao.LoginDaoImpl;
 
 /**
- * Login処理のModelクラス
- * @author matsumoto
+ * Model class for login process
+ * @author ken
  *
  */
 public class LoginModel {
 	/**
-	 * select処理
+	 * select
 	 * @param
 	 * @return
 	 */
 	public Login selectByMailaddressAndPass(String mailaddress,String pass){
-		// DAOの準備
+		// Get DAO object
 		LoginDaoImpl dao = new LoginDaoImpl();
-		// Deleteの実行
+		// Implement selection
 		return dao.selectByMailaddressAndPass(mailaddress, pass);
 	}
 }

@@ -3,13 +3,13 @@ package com.ken.empDbManagementSys.util;
 import java.util.Date;
 
 /**
- * String汎用クラス
- * @author matsumoto
+ * String utility class
+ * @author ken
  *
  */
 public class StringUtil {
 	/**
-	 * 渡された文字列をシングルクォーテーションで囲った文字列に変換する（nullはそのまま）
+	 * Convert string to string surrounded by single quotations（no convertion for null）
 	 * @param value
 	 * @return
 	 */

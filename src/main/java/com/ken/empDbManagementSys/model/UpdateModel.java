@@ -5,15 +5,15 @@ import com.ken.empDbManagementSys.database.dao.EmployeeDao;
 import com.ken.empDbManagementSys.database.dao.EmployeeDaoImpl;
 
 /**
- * Input処理のModelクラス
- * @author matsumoto
+ * Model class for update process
+ * @author ken
  *
  */
 public class UpdateModel {
 	public int update(Employee emp){
-		// DAOの準備
+		// Get DAO object
 		EmployeeDao dao = new EmployeeDaoImpl();
-		// updateの実行
+		// Implement update
 		return dao.update(emp);
 	}
 }

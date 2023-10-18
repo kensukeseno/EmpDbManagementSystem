@@ -10,30 +10,30 @@ import javax.servlet.http.HttpServletResponse;
 import com.ken.empDbManagementSys.model.OutputModel;
 
 /**
- * Outputサーブレットサンプル（Controller）
- * @author matsumoto
+ * Output sevlet（Controller）
+ * @author ken
  *
  */
 public class OutputServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// 画面遷移用
+		// Page url to transition to
 		String url = null;
-		// ログインチェック
+		// Login check
 		if(!AbstractServlet.loginCheck(req)){
 			url = "/login.jsp";
 		}else{
-			// output.jspから送られたリクエストパラメータの文字コードUTF-8に設定
+			// Set character code of request param from input.html to UTF-8
 			req.setCharacterEncoding("UTF-8");
-			// リクエストパラメータの取得
+			// Get request param
 			String key = req.getParameter("name");
-			// DAOを使用してDBからテーブルのレコードを取得（Modelクラスに委譲）
+			// Get records from database using dao
 			OutputModel model = new OutputModel();
 			req.setAttribute("list", model.getEmployeeList(key));
 			url = "/output.jsp";
 		}
-		// ページ遷移
+		// Page transition
 		req.getRequestDispatcher(url).forward(req,resp);
 	}
 }

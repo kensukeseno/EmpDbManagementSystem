@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 public class ValidationUtil {
 
 	/**
-	 * 必須入力判定
+	 * Required field validation
 	 * @param value
 	 * @return
 	 */
@@ -18,12 +18,12 @@ public class ValidationUtil {
 	}
 
 	/**
-	 * 数値型入力チェック（null許容）
+	 * Number type input check（accept null）
 	 * @param value
 	 * @return
 	 */
 	public static boolean validationInteger(String value){
-		// null値を許容
+		// Accept null
 		if(!validationRequired(value)){
 			return true;
 		}
@@ -36,18 +36,18 @@ public class ValidationUtil {
 	}
 
 	/**
-	 * 日付型入力チェック（null許容）
+	 * Date type input vakidation（accept null）
 	 * @param value
 	 * @return
 	 */
 	public static boolean validationDate(String value,String format){
-		// null値を許容
+		// Accept null
 		if(!validationRequired(value)){
 			return true;
 		}
 		try{
 			SimpleDateFormat sdf = new SimpleDateFormat(format);
-			// Date型変換
+			// Date type convertion
 			sdf.parse(value);
 		}catch(ParseException e){
 			return false;
@@ -57,7 +57,7 @@ public class ValidationUtil {
 
 
 	/**
-	 * ログインチェック
+	 * Login check
 	 */
 	public static boolean loginCheck(String id){
 		if(id != null){

@@ -5,8 +5,8 @@ import java.util.Date;
 import com.ken.empDbManagementSys.util.DateUtil;
 
 /**
- * Employeeエンティティ
- * @author matsumoto
+ * Employee entity
+ * @author ken
  *
  */
 public class Employee {

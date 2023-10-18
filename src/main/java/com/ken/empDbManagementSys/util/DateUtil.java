@@ -5,10 +5,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DateUtil {
-	// 日付フォーマット
+	// Sate format
 	public static final String DATE_FORMAT = "yyyy-MM-dd";
 	/**
-	 * 文字列を指定したフォーマットで日付型に変換
+	 * Change string format
 	 * @param value
 	 * @return
 	 */
@@ -17,7 +17,7 @@ public class DateUtil {
 		if(value != null){
 			SimpleDateFormat sdf = new SimpleDateFormat(format);
 			try{
-				// Date型変換
+				// Change data type
 				date = sdf.parse(value);
 			}
 			catch(ParseException e){
@@ -26,7 +26,7 @@ public class DateUtil {
 		return date;
 	}
 	/**
-	 * 日付を指定したフォーマットで文字列型に変換
+	 * Change string format
 	 * @param value
 	 * @return
 	 */

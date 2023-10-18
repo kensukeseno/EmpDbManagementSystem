@@ -8,17 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Logoutサーブレットサンプル（Controller）
- * @author matsumoto
+ * Logout servlet（Controller）
+ * @author ken
  *
  */
 public class LogoutServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// ログアウト
+		// Logout
 		req.getSession().invalidate();
-		// ページ遷移先
+		// Page transition
 		req.getRequestDispatcher("/login.jsp").forward(req,resp);
 	}
 }

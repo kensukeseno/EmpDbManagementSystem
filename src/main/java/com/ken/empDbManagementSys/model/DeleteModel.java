@@ -5,22 +5,22 @@ import com.ken.empDbManagementSys.database.dao.EmployeeDao;
 import com.ken.empDbManagementSys.database.dao.EmployeeDaoImpl;
 
 /**
- * Input処理のModelクラス
- * @author matsumoto
+ * Model class for delete process
+ * @author ken
  *
  */
 public class DeleteModel {
 	/**
-	 * delete処理
+	 * delete
 	 * @param emp
 	 * @return
 	 */
 	public int delete(int emp){
-		// DAOの準備
+		// Get DAO object
 		EmployeeDao dao = new EmployeeDaoImpl();
 		Employee employee = new Employee();
 		employee.setEmpid(emp);
-		// Deleteの実行
+		// Implement deletion
 		return dao.delete(employee);
 	}
 }
