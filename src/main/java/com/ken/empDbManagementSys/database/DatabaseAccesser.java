@@ -21,12 +21,12 @@ public class DatabaseAccesser{
 	// IP and port of database server
 	private static final String SERVER = "localhost";
 	// Database name
-	private static final String DBNAME = "seno_db";
+	private static final String DBNAME = "empManagement_db";
 	// URI
 	private static final String URL = "jdbc:postgresql://" + SERVER + "/" + DBNAME;
 	// Password of database user
-	private static final String USER = "seno_dbuser";
-	private static final String PASSWORD = "seno";
+	private static final String USER = "postgres";
+	private static final String PASSWORD = "postgre";
 
 
 	private Statement stmt;
